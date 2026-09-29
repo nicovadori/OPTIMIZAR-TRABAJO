@@ -21,7 +21,3 @@ workflows:
           ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - $CM_BUILD_DIR
