@@ -6,9 +6,15 @@ workflows:
     environment:
       java: 17
     scripts:
-      - name: Actualizar Gradle automaticamente
+      - name: Forzar Gradle 8.9 definitivo
         script: |
-          find . -name "gradle-wrapper.properties" -exec sed -i '' 's/8.7/8.9/g' {} + || true
+          rm -rf gradle/wrapper/gradle-wrapper.properties
+          mkdir -p gradle/wrapper
+          echo "distributionBase=GRADLE_USER_HOME" > gradle/wrapper/gradle-wrapper.properties
+          echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
+          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-all.zip" >> gradle/wrapper/gradle-wrapper.properties
+          echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
+          echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
           chmod +x ./gradlew
       - name: Construir APK
         script: |
