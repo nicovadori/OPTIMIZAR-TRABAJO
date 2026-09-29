@@ -1,0 +1,27 @@
+workflows:
+  android-apk:
+    name: Mi Jornada - Android APK
+    instance_type: linux_x2
+    max_build_duration: 30
+    environment:
+      android_signing:
+        - mi_jornada_keystore
+      vars:
+        PACKAGE_NAME: "com.nico.mijornada"
+      groups:
+        - google_play
+      java: 17
+    scripts:
+      - name: Check project
+        script: |
+          chmod +x ./gradlew
+          ./gradlew --version
+      - name: Build release APK
+        script: |
+          ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - $CM_BUILD_DIR

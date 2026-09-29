@@ -1,0 +1,13 @@
+Mi Jornada Android - preparado para Codemagic
+
+1. Sube TODO el contenido de este proyecto a un repositorio de GitHub.
+2. En Codemagic, añade el repositorio de GitHub.
+3. Selecciona el workflow "android-apk".
+4. Inicia la build.
+5. Al terminar, descarga el APK desde Artifacts.
+
+IMPORTANTE:
+- Este workflow genera un APK Release.
+- Para una instalación de prueba puede ser necesario firmarlo según la configuración de Android.
+- El workflow no incluye una clave privada de firma. No subas claves privadas al repositorio.
+- Si Codemagic informa que falta firma para el Release, primero podemos generar una build Debug (assembleDebug), que es suficiente para probar la app en el teléfono.
