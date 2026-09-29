@@ -1,7 +1,7 @@
 workflows:
   android-apk:
     name: Mi Jornada - Android APK
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     max_build_duration: 30
     environment:
       vars:
