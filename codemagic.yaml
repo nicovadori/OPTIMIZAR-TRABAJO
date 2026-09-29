@@ -6,9 +6,12 @@ workflows:
     environment:
       java: 17
     scripts:
+      - name: Actualizar Gradle automaticamente
+        script: |
+          find . -name "gradle-wrapper.properties" -exec sed -i '' 's/8.7/8.9/g' {} + || true
+          chmod +x ./gradlew
       - name: Construir APK
         script: |
-          chmod +x ./gradlew
           ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/**/*.apk
